@@ -57,8 +57,15 @@ export default function Cart() {
       await savePaymentRecord({ orderId, amount: total, status: 'paid', consumerId: user.uid, method });
     }
     await clearCart(user.uid);
-    toast.success(method === 'cod' ? 'Order placed — pay on delivery' : 'Order placed successfully');
-    window.location.href = `/payment/success?order_id=${orderId}`;
+    if (method === "cod") {
+      toast.success("Order placed successfully!");
+    
+      window.location.href = `/order/placed?order_id=${orderId}`;
+    } else {
+      toast.success("Payment successful!");
+    
+      window.location.href = `/payment/success?order_id=${orderId}`;
+    }
   };
 
   const handleCheckout = async () => {

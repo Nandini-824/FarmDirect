@@ -35,6 +35,7 @@ import ConsumerSettings from './pages/consumer/ConsumerSettings';
 import ChatsPage from './pages/shared/ChatsPage';
 import PaymentSuccess from './pages/payment/PaymentSuccess';
 import PaymentCancel from './pages/payment/PaymentCancel';
+import OrderPlaced from "./pages/payment/OrderPlaced";
 
 function Layout() {
   const location = useLocation();
@@ -95,6 +96,7 @@ export default function App() {
 
             <Route path="payment/success" element={<PaymentSuccess />} />
             <Route path="payment/cancel" element={<PaymentCancel />} />
+            <Route path="order/placed" element={<OrderPlaced />} />
           </Route>
         </Routes>
       </AuthProvider>
