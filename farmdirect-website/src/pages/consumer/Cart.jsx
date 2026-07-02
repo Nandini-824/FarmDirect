@@ -58,7 +58,7 @@ export default function Cart() {
     }
     await clearCart(user.uid);
     toast.success(method === 'cod' ? 'Order placed — pay on delivery' : 'Order placed successfully');
-    window.location.href = `/payment/success?order_id=${orderId}`;
+    navigate(`/payment/success?order_id=${orderId}`);
   };
 
   const handleCheckout = async () => {
