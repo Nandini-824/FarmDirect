@@ -44,7 +44,7 @@ export default function ConsumerDashboard() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <h1 className="text-2xl sm:text-3xl font-bold text-[rgb(3, 54, 22)] mb-2">Consumer Dashboard</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold text-green-700 mb-2">Consumer Dashboard</h1>
       <p className="text-slate-500 text-sm mb-8">Hello, {profile?.name || 'there'}! Shop directly from farmers.</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">

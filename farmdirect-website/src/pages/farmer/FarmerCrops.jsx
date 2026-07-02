@@ -52,7 +52,7 @@ export default function FarmerCrops() {
   return (
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">My Crops</h1>
+        <h1 className="text-2xl font-bold text-green-700">My Crops</h1>
         <Link to="/farmer/products/add" className="bg-green-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm text-center">+ Add Crop</Link>
       </div>
 

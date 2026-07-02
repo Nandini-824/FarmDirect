@@ -58,11 +58,11 @@ export default function FarmerDashboard() {
   };
 
   const stats = [
-    { label: "Today's Orders", value: earnings.todayOrders, icon: FiPackage, color: 'bg-emerald-500' },
-    { label: 'Monthly Revenue', value: `₹${earnings.monthly.toLocaleString()}`, icon: FiDollarSign, color: 'bg-green-600' },
-    { label: 'Products', value: crops.length, icon: FiShoppingBag, color: 'bg-teal-500' },
+    { label: "Today's Earnings", value: `₹${earnings.todayEarnings.toLocaleString()}`, icon: FiDollarSign, color: 'bg-emerald-500' },
+    { label: 'Monthly Revenue', value: `₹${earnings.monthly.toLocaleString()}`, icon: FiShoppingBag, color: 'bg-green-600' },
+    { label: 'Total Orders', value: earnings.orderCount, icon: FiPackage, color: 'bg-teal-500' },
     { label: 'Pending Orders', value: earnings.pendingCount, icon: FiClock, color: 'bg-amber-500' },
-    { label: 'Completed', value: earnings.completedCount, icon: FiPackage, color: 'bg-blue-500' },
+  
   ];
 
   if (loading) {
@@ -76,23 +76,16 @@ export default function FarmerDashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-        <div className="flex items-center gap-4">
-          {profile?.photoURL || profile?.profileImage ? (
-            <img src={profile.photoURL || profile.profileImage} alt="" className="w-14 h-14 rounded-full object-cover border-2 border-green-200" />
-          ) : (
-            <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center text-2xl">🧑‍🌾</div>
-          )}
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Farmer Dashboard</h1>
-            <p className="text-slate-500 text-sm mt-1">Welcome back, {profile?.name || 'Farmer'}</p>
-          </div>
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-green-700">Farmer Dashboard</h1>
+          <p className="text-slate-500 text-sm mt-1">Welcome back, {profile?.name || 'Farmer'}</p>
         </div>
         <Link to="/farmer/products/add" className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-colors">
-          <FiPlus /> Add Crop
+          <FiPlus /> Add Product
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
         {stats.map((s) => (
           <div key={s.label} className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex items-center gap-4">
             <div className={`${s.color} text-white p-3 rounded-xl`}><s.icon size={22} /></div>
@@ -107,8 +100,7 @@ export default function FarmerDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-slate-800">Recent Products</h2>
-            <Link to="/farmer/crops" className="text-sm text-green-600 font-semibold hover:underline">View all →</Link>
+            <h2 className="text-lg font-bold text-slate-800">Your Products ({crops.length})</h2>
           </div>
           {crops.length === 0 ? (
             <div className="bg-white border border-dashed border-slate-300 rounded-2xl p-12 text-center text-slate-400">
@@ -117,7 +109,7 @@ export default function FarmerDashboard() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {crops.slice(0, 4).map((crop) => (
+              {crops.map((crop) => (
                 <div key={crop.id} className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
                   <img src={crop.imageUrl} alt={crop.cropName} className="h-36 w-full object-cover" />
                   <div className="p-4">
@@ -162,6 +154,10 @@ export default function FarmerDashboard() {
             ))}
           </div>
           <Link to="/farmer/orders" className="block text-center text-sm text-green-600 font-semibold mt-4 hover:underline">View all orders →</Link>
+          <div className="mt-6 space-y-2">
+            <Link to="/schemes" className="block bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-slate-700 hover:border-green-300 transition-colors">🏛️ Government Schemes</Link>
+            <Link to="/decision" className="block bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-slate-700 hover:border-green-300 transition-colors">📊 Price Analytics</Link>
+          </div>
         </div>
       </div>
     </div>
