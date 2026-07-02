@@ -23,7 +23,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -117,17 +117,14 @@ code {
   background: var(--code-bg);
 }
 
-/* Tailwind Layer Customizations */
-@tailwind utilities;
-
-@layer base {
-  body {
-    margin: 0;
-    font-family: var(--sans);
-    background-color: var(--bg);
-    color: var(--text);
-    @apply antialiased tracking-tight;
-  }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.025em;
 }
 
 /* System Animations */
