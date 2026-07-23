@@ -25,9 +25,9 @@ dist-ssr
 # Environment variables
 .env
 .env.local
+.env.example
 
-# Firebase cache
-src/config/firebase.js
+
 
 
 
